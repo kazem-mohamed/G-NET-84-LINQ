@@ -33,5 +33,15 @@ class Program
         {
             Console.WriteLine($"{product.ProductName} - {product.UnitPrice:C}");
         }
+
+        Console.WriteLine("\nQuestion 4: In-stock condiments");
+
+        var inStockCondiments = ProductList.All
+            .Where(product => product.UnitsInStock > 0 && product.Category == "Condiments");
+
+        foreach (var product in inStockCondiments)
+        {
+            Console.WriteLine($"{product.ProductName} - Stock: {product.UnitsInStock}");
+        }
     }
 }
