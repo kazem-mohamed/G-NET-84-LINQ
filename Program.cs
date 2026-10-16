@@ -43,5 +43,20 @@ class Program
         {
             Console.WriteLine($"{product.ProductName} - Stock: {product.UnitsInStock}");
         }
+
+        Console.WriteLine("\nQuestion 5: Product availability");
+
+        var productAvailability = ProductList.All
+            .Select(product => new
+            {
+                Name = product.ProductName,
+                Price = product.UnitPrice,
+                StockStatus = product.UnitsInStock > 0 ? "Available" : "Out of Stock"
+            });
+
+        foreach (var product in productAvailability)
+        {
+            Console.WriteLine($"{product.Name} - {product.Price:C} - {product.StockStatus}");
+        }
     }
 }
